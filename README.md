@@ -1,0 +1,1 @@
+This project is a simple deep neural network trained using only TensorFlow C++. This is the support code of this [blog post](https://matrices.io/training-a-deep-neural-network-using-only-tensorflow-c/).
