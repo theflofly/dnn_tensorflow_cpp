@@ -11,7 +11,7 @@ using namespace std;
 
 int main() {
 
-  DataSet data_set("/Users/fco/Documents/personnel/projects/tensorflow/tensorflow/cc/models/normalized_car_features.csv");
+  DataSet data_set("normalized_car_features.csv");
   Tensor x_data(DataTypeToEnum<float>::v(),
                 TensorShape{static_cast<int>(data_set.x().size())/3, 3});
   copy_n(data_set.x().begin(), data_set.x().size(),
