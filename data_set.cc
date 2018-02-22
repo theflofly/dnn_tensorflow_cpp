@@ -6,8 +6,22 @@
 
 using namespace std;
 
-void DataSet::ReadCSVFile(string path) {
-  ifstream file(path);
+void DataSet::ReadCSVFile(string dir, string file_name) {
+  // if cmake is used to build, the csv file will be next to the binary
+  // - binary
+  // - file.csv
+  // if bazel is used, the csv file will be under some directories relative to the binary
+  // - binary
+  // - tensorflow/cc/models/file.csv
+  ifstream file(file_name);
+  if (!file) {
+    file.open(dir + file_name);
+  }
+  if (!file) {
+    cerr << "ERROR: No " << file_name << " next to the binary or at " << dir 
+    << ", please double check the location of the CSV dataset file." << endl;
+    cerr << "ERROR: The dir option must be relative to the binary location." << endl;
+  }
   stringstream buffer;
   buffer << file.rdbuf();
   string line;

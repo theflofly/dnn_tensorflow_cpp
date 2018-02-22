@@ -14,4 +14,5 @@ tf_cc_binary(
         "//tensorflow/cc:client_session",
         "//tensorflow/core:tensorflow"
     ],
+    data = ["normalized_car_features.csv"]
 )

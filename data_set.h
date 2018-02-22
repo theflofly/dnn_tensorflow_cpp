@@ -21,8 +21,8 @@ enum class Fuel {
 class DataSet {
 public:
   // Construct a data set from the given csv file path.
-  DataSet(string path) {
-    ReadCSVFile(path);
+  DataSet(string dir, string file_name) {
+    ReadCSVFile(dir, file_name);
   }
 
   // getters
@@ -30,7 +30,7 @@ public:
   vector<float>& y() { return y_; }
 
   // read the given csv file and complete x_ and y_
-  void ReadCSVFile(string path);
+  void ReadCSVFile(string dir, string file_name);
 
   // convert one csv line to a vector of float
   vector<float> ReadCSVLine(string line);
