@@ -82,12 +82,12 @@ int main() {
   
   // training steps
   for (int i = 0; i < 5000; ++i) {
-    TF_CHECK_OK(session.Run({{x, x_data}, {y, y_data}}, {loss}, &outputs));
     if (i % 100 == 0) {
+      TF_CHECK_OK(session.Run({{x, x_data}, {y, y_data}}, {loss}, &outputs));
       std::cout << "Loss after " << i << " steps " << outputs[0].scalar<float>() << std::endl;
     }
     // nullptr because the output from the run is useless
-    TF_CHECK_OK(session.Run({{x, x_data}, {y, y_data}}, {apply_w1, apply_w2, apply_w3, apply_b1, apply_b2, apply_b3, layer_3}, nullptr));
+    TF_CHECK_OK(session.Run({{x, x_data}, {y, y_data}}, {apply_w1, apply_w2, apply_w3, apply_b1, apply_b2, apply_b3}, nullptr));
   }
 
   // prediction using the trained neural net
